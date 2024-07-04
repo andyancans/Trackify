@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trackify</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .card-title {
+            margin-bottom: 0;
+        }
+
+        .card-text {
+            margin-bottom: 0;
+        }
+        .navbar {
+            background-color:
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Trackify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="container mt-4">
+        <h1 class="mb-4"></h1>
+        
+        <!-- Bitcoin -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Bitcoin (BTC) Price</h5>
+            </div>
+            <div class="card-body">
+                {% if btc_price is not None %}
+                    <p class="card-text">Current Price: ${{ btc_price }}</p>
+                {% else %}
+                    <p class="card-text">Price currently not available</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Ethereum -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5 class="card-title">Ethereum (ETH) Price</h5>
+            </div>
+            <div class="card-body">
+                {% if eth_price is not None %}
+                    <p class="card-text">Current Price: ${{ eth_price }}</p>
+                {% else %}
+                    <p class="card-text">Price currently not available</p>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
