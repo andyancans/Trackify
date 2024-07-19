@@ -1,8 +1,28 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from django.http import HttpResponse
+from portfolio.forms import UserRegisterForm, UserLoginForm
+from django.contrib.auth import authenticate, login, logout
 import requests
 
 # Create your views here.
+
+def fetch_prices():
+    url = "https://api.coingecko.com/api/v3/simple/price"
+    params = {
+        'ids': 'bitcoin,ethereum',
+        'vs_currencies': 'usd'
+    }
+    
+    response = requests.get(url, params=params)
+    data = response.json()
+
+    btc_price = data.get('bitcoin', {}).get('usd')
+    eth_price = data.get('ethereum', {}).get('usd')
+
+    return btc_price, eth_price
+
 def my_portfolio(request):
     btc_price, eth_price = fetch_prices()
 
@@ -12,17 +32,3 @@ def my_portfolio(request):
     }
     return render(request, 'index.html', context)
 
-def fetch_prices():
-    url = "https://api.coingecko.com/api/v3/simple/price"
-    params = {
-        'ids': 'bitcoin,ethereum',
-        'vs_currencies': 'usd'
-    }
-
-    response = requests.get(url, params=params)
-    data = response.json()
-
-    btc_price = data['bitcoin']['usd']
-    eth_price = data['ethereum']['usd']
-
-    return btc_price, eth_price
