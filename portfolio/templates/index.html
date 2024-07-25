@@ -9,11 +9,15 @@
     <style>
         body {
             background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
+            flex: 1;
         }
 
         .card {
@@ -32,62 +36,112 @@
         .card-text {
             margin-bottom: 0;
         }
+
         .navbar {
-            background-color:
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #fff;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="">Trackify</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">Trackify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="accounts/login">Login</a>
+                    <a class="nav-link" href="/profile">My Profile</a>
                 </li>
-            </ul>
-        </div>
-    </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log Out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login // Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
 
     <!-- Main -->
     <div class="container mt-4">
-        <h1 class="mb-4"></h1>
-        
-        <!-- Bitcoin -->
+        <!-- About Section -->
         <div class="card mb-3">
             <div class="card-header">
-                <h5 class="card-title">Bitcoin (BTC) Price</h5>
+                <h5 class="card-title">About Trackify</h5>
             </div>
             <div class="card-body">
-                {% if btc_price is not None %}
-                    <p class="card-text">Current Price: ${{ btc_price }}</p>
-                {% else %}
-                    <p class="card-text">Price currently not available</p>
-                {% endif %}
+                <p class="card-text">Trackify is a site made to track your personal crypto holdings. This service has been created in order to help simplify understanding the value of your tokens, all in one place.
+                    Currently, Trackify supports the tracking of Bitcoin and Ethereum, with many more tokens to come in the future. We hope you enjoy using our service!
+                </p>
             </div>
         </div>
         
-        <!-- Ethereum -->
+        <!-- Crypto Prices Section -->
         <div class="card mb-3">
             <div class="card-header">
-                <h5 class="card-title">Ethereum (ETH) Price</h5>
+                <h5 class="card-title">Current Crypto Prices!</h5>
             </div>
             <div class="card-body">
-                {% if eth_price is not None %}
-                    <p class="card-text">Current Price: ${{ eth_price }}</p>
-                {% else %}
-                    <p class="card-text">Price currently not available</p>
-                {% endif %}
+                <!-- Bitcoin -->
+                <div class="mb-3">
+                    <h6> ₿ Bitcoin (BTC)</h6>
+                    {% if btc_price is not None %}
+                        <p class="card-text">Current Price: ${{ btc_price }}</p>
+                    {% else %}
+                        <p class="card-text">Price currently not available</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Ethereum -->
+                <div>
+                    <h6>Ξ Ethereum (ETH)</h6>
+                    {% if eth_price is not None %}
+                        <p class="card-text">Current Price: ${{ eth_price }}</p>
+                    {% else %}
+                        <p class="card-text">Price currently not available</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
-        
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Follow us on:
+            <a href="#" target="_blank">Twitter</a>
+            <a href="https://github.com/andyancans" target="_blank">GitHub</a>
+        </p>
+        <p>&copy; 2024 Trackify</p>
+    </footer>
 
     <!-- Bootstrap & JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
