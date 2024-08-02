@@ -13,24 +13,24 @@
 
     <div class="tab-content" id="loginRegisterTabContent">
         <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-            <div class="card">
+            <div class="card p-4">
                 <h2 class="text-center">Login</h2>
                 <form method="POST" action="{% url 'login' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Login</button>
                 </form>
                 <p class="text-center mt-3"><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
             </div>
         </div>
 
         <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-            <div class="card">
+            <div class="card p-4">
                 <h2 class="text-center">Register</h2>
                 <form method="POST" action="{% url 'register' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Register</button>
                 </form>
             </div>
         </div>
