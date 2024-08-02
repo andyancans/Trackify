@@ -14,7 +14,7 @@
         The ability to import .csv files and add holdings according to the transactions in the csv.
         </li> 
         <li>
-        Fetching crypto transactions and amounts from API keys provided from cryptocurrency exchanges.
+        Fetching crypto transactions and amounts from API keys directly from cryptocurrency exchanges.
         </li>
         <li>
         Tax calculations according to provided transactions to help simplify taxes with cryptocurrency.
@@ -64,6 +64,8 @@
 <img src="assets\images\userstories.png">
 
 ## Bugs and Issues
+
+<p>An issue that may be encountered is that the values of cryptocurrency would drop to 0 for anywhere between 15 seconds and 60 seconds. After countless hours of testing, trying fixes and all sorts, I've determined this is just an API-limitation, and can be fixed by upgrading to a less limiting cryptocurrency price API provider, or paying for access to a premium API that allows for far more requests, without much limitation. This can be seen when spam-refreshing a page as it requests data from the API multiple times, causing it to rate-limit. This, in theory, would be a very prevalent issue if multiple users are on the site, so in a commercial setting it would be far more suitable to go for a paid API.</p>
 
 <p> Log error with heroku saying  NameError: name 'user_profile' is not defined, having googled the error we discovered it was either a spelling error or a ordering issue in the models.py file, having checked the spelling and moved the UserProfile model to the top the error message disappeared.</p>
 
