@@ -1,11 +1,10 @@
 <!-- myprofile.html -->
 {% extends "base.html" %}
-
 {% block title %}My Profile - Trackify{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Hi {{user}}!</h1>
+    <h1>Hi, <a class="intro-text">{{user}}</a>!</h1>
     
     <div class="card mt-4">
         <div class="card-body">

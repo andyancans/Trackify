@@ -6,12 +6,18 @@
     <title>{% block title %}Trackify{% endblock %}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .card {
+            border-radius: 8px;
+            border-color: purple;
+        }
+
         html, body {
             height: 100%;
         }
         body {
             display: flex;
             flex-direction: column;
+            background-color: lightskyblue;
         }
         .content {
             flex: 1;
@@ -29,6 +35,17 @@
         .footer a {
             color: #fff;
             margin: 0 10px;
+        }
+
+        .intro-text {
+            text-decoration: underline;
+            color: palevioletred;
+        }
+
+        .intro-text:hover {
+            color: white;
+            opacity: 75%;
+            cursor: default;
         }
 
     </style>
