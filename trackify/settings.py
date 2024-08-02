@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-c&x5n3mta#)mn4!n1f#u2*gl=qm!2d=^$^w9adiut%h0h009ux'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'trackify-ci-b43258ba5bf5.herokuapp.com',]
 
